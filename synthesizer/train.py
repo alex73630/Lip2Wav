@@ -172,12 +172,12 @@ def train(log_dir, args, hparams):
                     checkpoint_state = tf.train.get_checkpoint_state(save_dir)
                     
                     if checkpoint_state and checkpoint_state.model_checkpoint_path:
-                        # log("Loading checkpoint {}".format(checkpoint_state.model_checkpoint_path),
-                        #     slack=True)
-                        # saver.restore(sess, checkpoint_state.model_checkpoint_path)
-                        log("Loading checkpoint {}".format(hparams.eval_ckpt),
+                        log("Loading checkpoint {}".format(checkpoint_state.model_checkpoint_path),
                             slack=True)
-                        saver.restore(sess, hparams.eval_ckpt)
+                        saver.restore(sess, checkpoint_state.model_checkpoint_path)
+                        # log("Loading checkpoint {}".format(hparams.eval_ckpt),
+                        #    slack=True)
+                        # saver.restore(sess, hparams.eval_ckpt)
                     
                     else:
                         log("No model to load at {}".format(save_dir), slack=True)

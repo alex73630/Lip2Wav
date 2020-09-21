@@ -9,3 +9,10 @@ __pycache__
 *.pth
 .idea
 .idea/
+
+Dataset/*/videos
+Dataset/*/intervals
+Dataset/*/preprocessed
+Dataset/*/test_results
+
+synthesizer/saved_models

@@ -26,7 +26,7 @@ parser.add_argument('--ngpu', help='Number of GPUs across which to run in parall
 parser.add_argument('--batch_size', help='Single GPU Face detection batch size', default=16, type=int)
 parser.add_argument("--speaker_root", help="Root folder of Speaker", required=True)
 parser.add_argument("--resize_factor", help="Resize the frames before face detection", default=1, type=int)
-parser.add_argument("--speaker", help="Helps in preprocessing", required=True, choices=["chem", "chess", "hs", "dl", "eh"])
+parser.add_argument("--speaker", help="Helps in preprocessing", required=True, choices=["chem", "chess", "hs", "dl", "eh", "hardisk", "amixem"])
 
 
 args = parser.parse_args()
@@ -39,8 +39,10 @@ template2 = 'ffmpeg -hide_banner -loglevel panic -threads 1 -y -i {} -async 1 -a
 
 
 def crop_frame(frame, args):
-	if args.speaker == "chem" or args.speaker == "hs":
+	if args.speaker == "chem" or args.speaker == "hs" or args.speaker == "hardisk":
 		return frame
+	elif args.speaker == "amixem":
+		return frame[0:720, 640:1280]
 	elif args.speaker == "chess":
 		return frame[270:460, 770:1130]
 	elif args.speaker == "dl" or args.speaker == "eh":
