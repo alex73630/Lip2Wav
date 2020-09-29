@@ -1,1 +1,7 @@
 camera_mini_droite_2
+camera_mini_droite_3
+camera_fullscreen_4
+camera_fullscreen_7
+camera_fullscreen_10
+camera_fullscreen_14
+camera_fullscreen_18
